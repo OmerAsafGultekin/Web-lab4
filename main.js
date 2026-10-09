@@ -20,10 +20,18 @@ function renderTasks() {
     const toggleBtn = document.createElement("button");
     toggleBtn.className = "toggle-btn";
     toggleBtn.textContent = "Toggle";
+    toggleBtn.addEventListener("click", () => {
+      taskManager.toggleTask(task.id);
+      renderTasks();
+    });
 
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-btn";
     deleteBtn.textContent = "Delete";
+    deleteBtn.addEventListener("click", () => {
+      taskManager.removeTask(task.id);
+      renderTasks();
+    });
 
     actionsDiv.appendChild(toggleBtn);
     actionsDiv.appendChild(deleteBtn);
